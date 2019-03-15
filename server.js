@@ -1,33 +1,23 @@
-// ==============================================================================
-// DEPENDENCIES
-// ==============================================================================
-const express = require('express');
-const path = require('path');
+import express from 'express';
+import next from 'next';
+import compression from 'compression';
+import routes from 'routes';
+const port = parseInt(process.env.PORT, 10) || 3000
+const dev = process.env.NODE_ENV !== 'production'
+import bodyParser from 'body-parser';
+const app = next({ dev })
+const handle = routes.getRequestHandler(app)
 
-// ==============================================================================
-// EXPRESS CONFIGURATION
-// ==============================================================================
-
-// Tells node that we are creating an "express" server
-const app = express();
-
-// Sets an initial port. 
-const PORT = process.env.PORT||8080;
-
-// Sets up the Express app to handle data parsing
-app.use(express.static(path.join(__dirname, './app/public')));
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
-
-// ================================================================================
-// ROUTER
-// ================================================================================
-require("./app/routes/apiRoutes")(app);
-require("./app/routes/htmlRoutes")(app);
-
-// =============================================================================
-// LISTENER
-// =============================================================================
-app.listen(PORT, () => {
-  console.log("App listening on PORT: " + PORT);
-});
+app.prepare()
+.then(() => {
+  const server = express();
+  server.use(compression());
+  server.use(bodyParser.urlencoded({ extended: false }));
+  server.use(bodyParser.json());
+  server.get('*', (req, res) => handle(req, res))
+  // server
+  server.use(handle).listen(port, (err) => {
+    if (err) throw err
+    console.log(`> Ready on http://localhost:${port}`)
+  })
+})
