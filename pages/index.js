@@ -34,17 +34,17 @@ class HomePage extends React.Component {
 
 	render() {
 		return (
-      <Meta>
-        <Head>
-          <title>Medical Professional ~ Cosmic JS Next Js App</title>
-          <meta name="description" content={ this.state.home.seo_description.value } />
+  <Meta>
+    <Head>
+      <title>River Oaks Nails & Spa</title>
+        <meta name="description" content={this.state.home.seo_description.value} />
           <link rel="icon" type="image/png" href={`${this.state.header.metadata.favicon.imgix_url}?w=32`} sizes="32x32" />
-          <link rel="icon" type="image/png" href={`${this.state.header.metadata.favicon.imgix_url}?w=16`} sizes="16x16" />
-        </Head>
-        <Header header={this.state.header} nav={this.state.nav} />
-        <Home home={this.state.home}></Home>
-        <Footer footer={this.state.footer} social={this.state.social} contactInfo={this.state.contactInfo} />
-      </Meta>
+            <link rel="icon" type="image/png" href={`${this.state.header.metadata.favicon.imgix_url}?w=16`} sizes="16x16" />
+    </Head>
+      <Header header={this.state.header} nav={this.state.nav} />
+        <Home home={this.state.home} />
+          <Footer footer={this.state.footer} social={this.state.social} contactInfo={this.state.contactInfo} />
+  </Meta>
 		);
 	}
 }

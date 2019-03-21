@@ -18,7 +18,7 @@ class AboutUsPage extends React.Component {
     const globals = mapGlobals(Response.objects);
     return { globals, aboutUs };
   }
-
+ 
   constructor(props){
     super(props);
     this.state = {
@@ -34,17 +34,17 @@ class AboutUsPage extends React.Component {
 
 	render() {
 		return (
-      <Meta>
-        <Head>
-          <title>Medical Professional ~ Cosmic JS Next Js App</title>
-          <meta name="description" content={ this.state.aboutUs.metadata.seo_description.value } />
+  <Meta>
+    <Head>
+      <title>Medical Professional ~ Cosmic JS Next Js App</title>
+        <meta name="description" content={this.state.aboutUs.metadata.seo_description.value} />
           <link rel="icon" type="image/png" href={`${this.state.header.metadata.favicon.imgix_url}?w=32`} sizes="32x32" />
-          <link rel="icon" type="image/png" href={`${this.state.header.metadata.favicon.imgix_url}?w=16`} sizes="16x16" />
-        </Head>
-        <Header header={this.state.header} nav={this.state.nav} />
-        <AboutUs aboutUs={this.state.aboutUs}></AboutUs>
-        <Footer footer={this.state.footer} social={this.state.social} contactInfo={this.state.contactInfo} />
-      </Meta>
+                <link rel="icon" type="image/png" href={`${this.state.header.metadata.favicon.imgix_url}?w=16`} sizes="16x16" />
+    </Head>
+      <Header header={this.state.header} nav={this.state.nav} />
+        <AboutUs aboutUs={this.state.aboutUs} />
+              <Footer footer={this.state.footer} social={this.state.social} contactInfo={this.state.contactInfo} />
+  </Meta>
 		);
 	}
 }

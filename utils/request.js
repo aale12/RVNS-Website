@@ -22,7 +22,7 @@ function getPages() {
   };
   return bucket.getObjectsByType(params);
 }
-
+ 
 function getObject(slug) {
   const params = {
     slug: slug
@@ -48,7 +48,7 @@ async function contactForm(data, contact) {
   if (!config.env.SENDGRID_FUNCTION_ENDPOINT) {
     return {
       status: false,
-      message: "You must add a SendGrid Function Endpoint URL.  Contact your developer to add this value."
+      message: 'You must add a SendGrid Function Endpoint URL.  Contact your developer to add this value.'
     }
   } else {
     try {
@@ -72,7 +72,7 @@ async function contactForm(data, contact) {
     } catch(error) {
       return {
         status: false,
-        message: "You must add a SendGrid Function Endpoint URL.  Contact your developer to add this value."
+        message: 'You must add a SendGrid Function Endpoint URL.  Contact your developer to add this value.'
       }
     }
   }

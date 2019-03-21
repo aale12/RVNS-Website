@@ -1,16 +1,17 @@
 import React from 'react';
+
 class AboutUs extends React.Component {
-	render() {
+    render() {
         const { aboutUs } = this.props;
-		return (
-            <div>
+        return (
+          <div>
             <div className="container">
-                <p className="h2">{aboutUs.title}</p>
-                <div dangerouslySetInnerHTML={{__html: aboutUs.content}} />
+              <p className="h2">{aboutUs.title}</p>
+                <div dangerouslySetInnerHTML={{ __html: aboutUs.content }} />
             </div>
-        </div>
-		);
-	}
+          </div>
+        );
+    }
 }
 
 export default AboutUs;
