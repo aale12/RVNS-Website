@@ -10,7 +10,7 @@ class PageLayout extends Component {
     render() {
         return (
             <div className="layoutRoot">
-            <Brand />
+                <Brand />
                 <Header />
                 <div className="pageContent">
                     {this.props.children}
