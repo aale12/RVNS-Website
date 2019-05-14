@@ -1,59 +1,75 @@
-# React Website Boilerplate
-![react-website-boilerplate](https://cosmic-s3.imgix.net/ef914540-3106-11e8-8a87-1d4e79eefafa-nextjs-cosmicjs.jpg)
-A website template that satisfies some common website requirements including dynamic pages, blog articles, author management, SEO ability, contact form and website search. Built using React and Next.js. Contributions welcome!
+# Simple React Template
+Super simple, and easy to use, opinionated React template, with a bunch of features.
 
-## Demo
-[Click here to view the demo](https://cosmicjs.com/apps/nextjs-website-boilerplate)
-
-> [Read how this app was built](https://cosmicjs.com/articles/nextjs-website-boilerplate-jeoea8au)
+There is always room for improvement, so feel free to fork, make change and then make a PR.
 
 ## Features
-1. Fully responsive down to mobile w/ [Bootstrap](http://getbootstrap.com) frontend<br />
-2. SEO ready<br />
-3. A contact form that sends an email to your email(s) of choice and to [Cosmic JS](https://cosmicjs.com) for easy reference<br />
-4. Full-site search functionality<br />
-5. All content is easily managed in [Cosmic JS](https://cosmicjs.com) including pages, blog and contact info.
+- Uses Webpack 4
+- Uses Babel 7
+- Support decorators and class properties
+- Latest ES2017 syntax support
+- Routing via React Router
+- HMR (Hot Module Reloading)
+- Development server
+- Source Maps for easy development
+- SCSS support
+- Markdown file loading (For quick static sites)
+- Redux (Persistant store + Redux Thunk for async actions)
 
-Sign up for [Cosmic JS](https://cosmicjs.com) to install the demo content and deploy this website.
-
-## Getting Started
-
-```bash
-git clone https://github.com/cosmicjs/react-website-boilerplate
-cd react-website-boilerplate
-npm install
-
-# Run in development and serve at localhost:3000
-npm run dev
-
-# build for production
-npm run build
-
-# Run in production and serve at localhost:3000
-COSMIC_BUCKET=your-bucket-slug npm start
+## Folder structure
 ```
-Import the `bucket.json` file into your Cosmic JS Bucket.  To do this go to Your Bucket > Settings > Import / Export Data.
+root
+    - dist/ (Where the builded project files go)
+    - src/
+        - js/ (All js related stuff)
+            - actions/ (Redux Actions)
+            - components/ (Simple components, like buttons etc..)
+            - layouts/ (Layout components)
+            - pages/ (Page components, AKA pages)
+                - Home/ (Example home page)
+            - reducers/ (Redux Reducers)
+            - app.js (App js entry point)
+            - routes.js (App routes)
+            - store.js (Store setup)
+            - styles.js (Importing of all the styles for the app)
+        - scss/ (All SCSS styles)
+            - components/ (SCSS styles for components)
+            - global/ (Global SCSS)
+            - main.scss (SCSS entry point)
+    - index.html (Entry point of the app)
+    - markdown-loader.js (Markdown loader config)
+    - package.json
+    - webpack.config.js (Webpack config file)
+```
 
-<img src="https://cosmic-s3.imgix.net/44f0d590-0303-11e9-b4bb-b3fa3d766bf7-sendgrid.gif?w=1300" width="700" />
+## Getting started
+- Clone the project
+- Run `npm install` inside the folder
+- Run `npm run start` to start the development server
+- Open the URL `http:\\localhost:8080`
+- App is now running, so get to developing awesome stuff!
 
-## Contact form setup
-Install and deploy the SendGrid Email Function.
+## Building production app
+You simply run `npm run build:prod`
 
-<img src="https://cosmic-s3.imgix.net/a07738c0-00d6-11e9-95fe-59d8fdd00c64-sendgrid-email.png?w=1500" width="700" />
+After it's done, four new files with be in the `dist/` folder.
 
-The contact form on the contact page uses the [SendGrid Email Function](https://github.com/cosmicjs/send-email-function) to send emails. To deploy your email function go to Your Bucket > Settings > Functions. Install and deploy the SendGrid Function. You will need an account with [SendGrid](https://sendgrid.com/) to add your SendGrid API key.
+Upload the `index.html` and the `dist/` folder to your server, and your good to go!
 
-### Add the SendGrid Function Endpoint
+**How it should look on your server**
+```
+- dist/
+    - main.css
+    - main.css.map
+    - bundle.js
+    - bundle.js.map
+index.html
+```
 
-#### in development
-Go to `config/index.js` and edit `SENDGRID_FUNCTION_ENDPOINT` to manually add the URL for testing.
+NOTE: Please remember to route all URL's on your server to the `index.html` file, for best experience.
 
-#### in production
-If you are using the Web Hosting option that's included with every Bucket:
-1. Go to Your Bucket > Settings > Web Hosting
-2. Deploy your Website
-3. Click 'Set Environment Variables' tab and add the SendGrid Function endpoint:
+## Redux store persistence
+Currently the template is setup to put the whole Redux store into `localStorage`, but you could easily expand it to only store the stuff you want persistent.
 
-Key | Value
---- | ---
-| SENDGRID_FUNCTION_ENDPOINT     | https://your-lambda-endpoint.amazonaws.com/dev/send-email
+## Credits
+Big thanks for to **KriaSoft** for their markdown-loader.js file [- KriaSoft](https://github.com/kriasoft/react-static-boilerplate)
